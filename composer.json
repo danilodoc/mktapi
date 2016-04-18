@@ -1,0 +1,9 @@
+{
+    "require": {
+        "facebook/php-sdk-v4": "^5.1",
+        "seostats/seostats": "^2.5",
+        "cosenary/instagram": "^2.3",
+        "abraham/twitteroauth": "^0.6.3",
+        "madcoda/php-youtube-api": "^1.2"
+    }
+}
