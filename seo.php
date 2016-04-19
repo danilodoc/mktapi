@@ -1,49 +1,61 @@
 <?php
-ini_set('display_errors','off');
-header("Content-type: text/html; charset=UTF-8");
-
-if(empty($_GET['url'])){
-	exit('Insira a URL da marca');
-}
+header("Content-Type: application/json; charset=UTF-8");
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'SEOstats' . DIRECTORY_SEPARATOR . 'SEOstats' . DIRECTORY_SEPARATOR . 'bootstrap.php';
+
+$returnData = array();
+
+if(empty($_GET['url'])){
+	$returnData = array("error" => "Missing URL");
+    print_r(json_encode($returnData));
+    exit;
+}
 
 use \SEOstats\Services as SEOstats;
 
 $url = $_GET['url'];
+$url = substr($url, 0, 7) != "http://" ? "http://".$url : $url;
 
 $seostats = new \SEOstats\SEOstats;
 
-if ($seostats->setUrl($url)) {
+if(!$seostats->setUrl($url)) {
+    $returnData = array("error" => "No data returned");
+    print_r(json_encode($returnData));
+    exit;
+}
 
-echo '<b>WebMeUp Backlinks: </b>'.SEOstats\WebMeUp::getWebMeUpBacklinksCount($url);
-echo '<br />';
+//WebMeUp Backlinks
+$returnData['backLinks'] = SEOstats\WebMeUp::getWebMeUpBacklinksCount($url);
 
-echo '<b>Google Page Rank: </b>'.SEOstats\Google::getPageRank();
-echo '<br />';
+//Google Page Rank
+$returnData['pageRnak'] = SEOstats\Google::getPageRank();
+    
+//Mozscape Domain Authority
+$returnData['domainAuthority'] = round(SEOstats\Mozscape::getDomainAuthority());
+    
+//Mozscape Page Authority
+$returnData['pageAuthority'] = round(SEOstats\Mozscape::getPageAuthority());
+    
 
-$domainAuthority = round(SEOstats\Mozscape::getDomainAuthority());
-echo '<b>Mozscape Domain Authority: </b>'.$domainAuthority;
-echo '<br />';
-
-$pageAuthority = round(SEOstats\Mozscape::getPageAuthority());
-echo '<b>Mozscape Page Authority: </b>'.$pageAuthority;
-echo '<br />';
-
+//Google Key Words
 $organicKey = SEOstats\SemRush::getOrganicKeywords($url, 'br');
 $keyWords = "";
 
 if(is_array($organicKey) && !empty($organicKey['data'])){
-	foreach($organicKey['data'] as $keyData){
+	foreach($organicKey['data'] as $key => $keyData){
+        if($key == 5){
+            break;
+        }
 		$keyWords .= $keyData['Ph']. ", ";
 	}
 	$keyWords = substr($keyWords, 0, -2);
 }
-echo '<b>Google Keywords Principais: </b>'.$keyWords;
-echo '<br />';
+$returnData['keyWords'] = $keyWords;
 
+//Google Tag Title
 $objPage = SEOstats\Google::getPagespeedAnalysis();
-echo '<b>Google Tag Title: </b>'.$objPage->title;
-echo '<br />';
-}
+$returnData['pageTitle'] = $objPage->title;
+
+print_r(json_encode($returnData));
+exit;
 ?>

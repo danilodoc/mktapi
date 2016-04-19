@@ -1,0 +1,25 @@
+.seo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+}
+.seo-card-square > .mdl-card__title {
+  color: #fff;
+  background:
+    url('../image/welcome_card.jpg') bottom right 15% no-repeat #46B6AC;
+}
+.seo-card-square p{
+    padding: 0;
+    margin: 0;
+}
+
+.seo-card-square .mdl-card__title{
+    height: 20px
+}
+
+.seo-card-square h2{
+    font-size: 15px;
+}
+
+.page-content #seoContainer div{
+    float: left;
+}
