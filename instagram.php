@@ -1,10 +1,11 @@
 <?php
-
-ini_set('display_errors','off');
-header("Content-type: text/html; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
+require_once('vendor/autoload.php');
 
 if(empty($_GET['id'])){
-	exit('Insira o ID da marca');
+	$returnData = array("error" => "Missing ID");
+    print_r(json_encode($returnData));
+    exit;
 }
 
 $username = $_GET['id'];
@@ -57,16 +58,14 @@ $dateRange = $dateRange->days;
 $postFrequency = round($numberOfPosts/$dateRange, 2);
 
 //Engajamento médio por post (likes + comentários)
-$postEngagement = round(($totalLikes + $totalComments) / $numberOfPosts, 2);
+$postEngagement = round(($totalLikes + $totalComments*2) / $numberOfPosts, 2);
 
-print_r("<img src=".$userData['data']['profile_picture']." />");
-echo "<br />";
-print_r("Nome: ".$userData['data']['full_name']);
-echo "<br />";
-print_r("Número de seguidores: ".$userData['data']['counts']['followed_by']);
-echo "<br />";
-print_r("Média de ".$postFrequency." posts por dia");
-echo "<br />";
-print_r("Média de ".$postEngagement." interações por post (likes + comentários)");
-echo "<br />";
+$returnData['profilePicture'] = $userData['data']['profile_picture'];
+$returnData['fullName'] = $userData['data']['full_name'];
+$returnData['followedBy'] = $userData['data']['counts']['followed_by'];
+$returnData['postFrequency'] = $postFrequency;
+$returnData['postEngagement'] = $postEngagement;
+
+print_r(json_encode($returnData)); 
+exit;
 ?>

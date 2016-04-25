@@ -49,8 +49,9 @@ require_once('vendor/autoload.php');
                 <!--<nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="">Link</a>
                 </nav>-->
+                
+                <!-- SEO -->
                 <form action="#">
-                    <!-- SEO -->
                     <div class="seo-list-action mdl-list">
                         <div class="mdl-list__item">
                             <span class="mdl-list__item-primary-content">
@@ -67,9 +68,9 @@ require_once('vendor/autoload.php');
                         <i class="material-icons">add</i>
                     </button>
                 </form>
-                <form action="#">
-                    <!-- FACEBOOK -->
-                    
+                
+                <!-- FACEBOOK -->
+                <form action="#">                    
                     <div class="facebook-list-action mdl-list">
                         <div class="mdl-list__item">
                             <span class="mdl-list__item-primary-content">
@@ -85,7 +86,25 @@ require_once('vendor/autoload.php');
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="facebookButton">
                         <i class="material-icons">add</i>
                     </button>
-                    
+                </form>
+                
+                <!-- INSTAGRAM -->
+                <form action="#">                    
+                    <div class="instagram-list-action mdl-list">
+                        <div class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-avatar">camera</i>
+                                <span>Instagram</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield" style="width: 70%">
+                        <input class="mdl-textfield__input" type="text" id="instagramField">
+                        <label class="mdl-textfield__label" for="instagram">ID...</label>
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="instagramButton">
+                        <i class="material-icons">add</i>
+                    </button>
                 </form>
             </div>
 
@@ -111,6 +130,18 @@ require_once('vendor/autoload.php');
                                     <span class="mdl-list__item-primary-content">
                                         <i class="material-icons mdl-list__item-avatar">face</i>
                                         <span>Facebook</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </p>                        
+                    </div>
+                    <div id="instagramContainer">
+                        <p>
+                            <div class="instagram-list-action mdl-list">
+                                <div class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-avatar">camera</i>
+                                        <span>Instagram</span>
                                     </span>
                                 </div>
                             </div>
