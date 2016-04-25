@@ -31,7 +31,7 @@ require_once('vendor/autoload.php');
     <body>
         <div class="mdl-layout mdl-js-layout">
 
-            <header class="mdl-layout__header mdl-layout__header--scroll">
+            <header id="menuTop" class="mdl-layout__header mdl-layout__header--scroll">
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
                     <span class="mdl-layout-title">Mkt Virtual API</span>
@@ -39,18 +39,19 @@ require_once('vendor/autoload.php');
                     <div class="mdl-layout-spacer"></div>
                     <!-- Navigation -->
                     <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Documentação</a>
                     </nav>
                 </div>
             </header>
 
-            <div class="mdl-layout__drawer">
+            <div id="menuLeft" class="mdl-layout__drawer">
                 <span class="mdl-layout-title">Mkt Virtual API</span>
                 <!--<nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="">Link</a>
                 </nav>-->
                 <form action="#">
-                    <div class="demo-list-action mdl-list">
+                    <!-- SEO -->
+                    <div class="seo-list-action mdl-list">
                         <div class="mdl-list__item">
                             <span class="mdl-list__item-primary-content">
                                 <i class="material-icons mdl-list__item-avatar">star</i>
@@ -60,19 +61,61 @@ require_once('vendor/autoload.php');
                     </div>
                     <div class="mdl-textfield mdl-js-textfield" style="width: 70%">
                         <input class="mdl-textfield__input" type="text" id="seoField">
-                        <label class="mdl-textfield__label" for="sample1">URL...</label>
+                        <label class="mdl-textfield__label" for="seo">URL...</label>
                     </div>
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="seoButton">
                         <i class="material-icons">add</i>
                     </button>
                 </form>
+                <form action="#">
+                    <!-- FACEBOOK -->
+                    
+                    <div class="facebook-list-action mdl-list">
+                        <div class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-avatar">face</i>
+                                <span>Facebook</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield" style="width: 70%">
+                        <input class="mdl-textfield__input" type="text" id="facebookField">
+                        <label class="mdl-textfield__label" for="facebook">ID...</label>
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="facebookButton">
+                        <i class="material-icons">add</i>
+                    </button>
+                    
+                </form>
             </div>
 
-            <main class="mdl-layout__content">
+            <main id="masterContainer" class="mdl-layout__content">
                 <div class="page-content">
-                    <h1>MKT API</h1>
-                    <div id="seoContainer"></div>
-
+                    <h1>MKT API V0.2</h1>
+                    <div id="seoContainer">
+                        <p>
+                            <div class="seo-list-action mdl-list">
+                                <div class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-avatar">star</i>
+                                        <span>SEO</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </p>
+                    </div>
+                    <div id="facebookContainer">
+                        <p>
+                            <div class="facebook-list-action mdl-list">
+                                <div class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-avatar">face</i>
+                                        <span>Facebook</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </p>                        
+                    </div>
                 </div>
             </main>
 

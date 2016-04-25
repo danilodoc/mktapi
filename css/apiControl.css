@@ -1,25 +1,63 @@
-.seo-card-square.mdl-card {
-  width: 320px;
-  height: 320px;
-}
-.seo-card-square > .mdl-card__title {
-  color: #fff;
-  background:
-    url('../image/welcome_card.jpg') bottom right 15% no-repeat #46B6AC;
-}
-.seo-card-square p{
-    padding: 0;
-    margin: 0;
+#menuTop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
 }
 
-.seo-card-square .mdl-card__title{
-    height: 20px
+#menuLeft{
+    position: fixed;
 }
 
-.seo-card-square h2{
-    font-size: 15px;
+.mdl-layout__drawer-button{
+    position: fixed;
 }
 
-.page-content #seoContainer div{
-    float: left;
+#masterContainer{
+    margin-top: 50px;
+}
+
+.seo-card-event.mdl-card {
+    width: 300px;
+    height: 300px;
+    background: #FFF;
+    float:left;
+    margin: 10px 0px 0px 10px;
+}
+.seo-card-event > .mdl-card__actions {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.seo-card-event > .mdl-card__title {
+    align-items: flex-start;
+}
+.seo-card-event > .mdl-card__title > p {
+    font-size: 12px;
+    margin-top: 0;
+}
+.seo-card-event > .mdl-card__actions {
+    display: flex;
+    box-sizing:border-box;
+    align-items: center;
+}
+.seo-card-event > .mdl-card__actions > .material-icons {
+    padding-right: 10px;
+}
+.seo-card-event > .mdl-card__title,
+.seo-card-event > .mdl-card__actions,
+.seo-card-event > .mdl-card__actions > .mdl-button {
+    color: #000;
+}
+
+#seoContainer {
+    float:left;
+    width: 100%;
+    background-color: aliceblue;
+    padding-bottom: 20px;
+}
+
+#facebookContainer {
+    float:left;
+    width: 100%;
+    background-color: antiquewhite;
+    padding-bottom: 20px;
 }
