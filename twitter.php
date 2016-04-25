@@ -1,15 +1,14 @@
 <?php
-
-ini_set('display_errors','off');
-header("Content-type: text/html; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
+require_once('vendor/autoload.php');
 
 if(empty($_GET['id'])){
-	exit('Insira o ID da marca');
+	$returnData = array("error" => "Missing ID");
+    print_r(json_encode($returnData));
+    exit;
 }
 
 $twitterID = $_GET['id'];
-
-require_once('vendor/autoload.php');
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
@@ -49,16 +48,12 @@ $postFrequency = round($numberOfPosts/$dateRange, 2);
 $postEngagement = round(($totalRetweets + $totalFavorites) / $numberOfPosts, 2);
 
 
+$returnData['pageAvatar'] = $user['profile_image_url'];
+$returnData['pageName'] = $user['name'];
+$returnData['followers'] = $user['followers_count'];
+$returnData['pagePostFrequency'] = $postFrequency;
+$returnData['pagePostEngagement'] = $postEngagement;
 
-
-print_r("<img src=".$user['profile_image_url']." />");
-echo "<br />";
-print_r("Nome: ".$user['name']);
-echo "<br />";
-print_r("Número de seguidores: ".$user['followers_count']);
-echo "<br />";
-print_r("Média de ".$postFrequency." tweets por dia");
-echo "<br />";
-print_r("Média de ".$postEngagement." interações por post (retweets + favoritos)");
-
+print_r(json_encode($returnData)); 
+exit;
 ?>

@@ -68,3 +68,17 @@
     background-color:darksalmon;
     padding-bottom: 20px;
 }
+
+#twitterContainer {
+    float:left;
+    width: 100%;
+    background-color:cornflowerblue;
+    padding-bottom: 20px;
+}
+
+#youtubeContainer {
+    float:left;
+    width: 100%;
+    background-color:crimson;
+    padding-bottom: 20px;
+}

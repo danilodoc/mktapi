@@ -106,6 +106,44 @@ require_once('vendor/autoload.php');
                         <i class="material-icons">add</i>
                     </button>
                 </form>
+                
+                <!-- TWITTER -->
+                <form action="#">                    
+                    <div class="twitter-list-action mdl-list">
+                        <div class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-avatar">whatshot</i>
+                                <span>Twitter</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield" style="width: 70%">
+                        <input class="mdl-textfield__input" type="text" id="twitterField">
+                        <label class="mdl-textfield__label" for="twitter">ID...</label>
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="twitterButton">
+                        <i class="material-icons">add</i>
+                    </button>
+                </form>
+                
+                <!-- YOUTUBE -->
+                <form action="#">                    
+                    <div class="youtube-list-action mdl-list">
+                        <div class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-avatar">slideshow</i>
+                                <span>Youtube</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield" style="width: 70%">
+                        <input class="mdl-textfield__input" type="text" id="youtubeField">
+                        <label class="mdl-textfield__label" for="youtube">ID...</label>
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="youtubeButton">
+                        <i class="material-icons">add</i>
+                    </button>
+                </form>
             </div>
 
             <main id="masterContainer" class="mdl-layout__content">
@@ -142,6 +180,30 @@ require_once('vendor/autoload.php');
                                     <span class="mdl-list__item-primary-content">
                                         <i class="material-icons mdl-list__item-avatar">camera</i>
                                         <span>Instagram</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </p>                        
+                    </div>
+                    <div id="twitterContainer">
+                        <p>
+                            <div class="twitter-list-action mdl-list">
+                                <div class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-avatar">whatshot</i>
+                                        <span>Twitter</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </p>                        
+                    </div>
+                    <div id="youtubeContainer">
+                        <p>
+                            <div class="instagram-list-action mdl-list">
+                                <div class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                        <i class="material-icons mdl-list__item-avatar">slideshow</i>
+                                        <span>Youtube</span>
                                     </span>
                                 </div>
                             </div>

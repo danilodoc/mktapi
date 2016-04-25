@@ -1,14 +1,14 @@
 <?php
-//ini_set('display_errors','off');
-header("Content-type: text/html; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
+require_once('vendor/autoload.php');
 
 if(empty($_GET['id'])){
-	exit('Insira o ID da marca');
+	$returnData = array("error" => "Missing ID");
+    print_r(json_encode($returnData));
+    exit;
 }
 
 $ytID = $_GET['id'];
-
-require_once('vendor/autoload.php');
 
 use Madcoda\Youtube;
 
@@ -18,17 +18,13 @@ $channel = $youtube->getChannelByName($ytID);
 
 $videos = $youtube->getPlaylistsByChannelId($channel->id);
 
-print_r("<img src=".$channel->snippet->thumbnails->default->url." />");
-echo "<br />";
-print_r("Nome: ".$channel->snippet->title);
-echo "<br />";
-print_r("Número de inscritos: ".$channel->statistics->subscriberCount);
-echo "<br />";
-print_r("Número de vídeos: ".$channel->statistics->videoCount);
-echo "<br />";
-print_r("Total de visualizações: ".$channel->statistics->viewCount);
-echo "<br />";
-print_r("Total de comentários: ".$channel->statistics->commentCount);
-echo "<br />";
+$returnData['profilePicture'] = $channel->snippet->thumbnails->default->url;
+$returnData['fullName'] = $channel->snippet->title;
+$returnData['subscribers'] = $channel->statistics->subscriberCount;
+$returnData['videos'] = $channel->statistics->videoCount;
+$returnData['views'] = $channel->statistics->viewCount;
+$returnData['comments'] = $channel->statistics->commentCount;
 
+print_r(json_encode($returnData)); 
+exit;
 ?>
