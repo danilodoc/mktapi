@@ -30,7 +30,7 @@ $(document).on('click', '#facebookButton', function() {
 
             $('#facebookButton').attr("disabled", false);
 
-            $("#facebookContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" /><br><b>Page Name:</b> "+data.pageName+"<br><b>Page Fans:</b> "+data.pageFans+"<br><b>Post Frequency:</b> "+data.pagePostFrequency+"<br><b>Post Engagement:</b> "+data.pagePostEngagement+"<br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i></div></div></div>");
+            $("#facebookContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" /><br><b>Page Name:</b> "+data.pageName+"<br><b>Page Fans:</b> "+data.pageFans+"<br><b>Post Frequency:</b> "+data.pagePostFrequency+"<br><b>Post Engagement:</b> "+data.pagePostEngagement+"<br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: "+data.pageScore+"</i></div></div></div>");
 
         });
     }

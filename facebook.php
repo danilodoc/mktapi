@@ -26,7 +26,7 @@ if(empty($fbPage)){
     exit;
 }
 
-$fbPosts = $fb->get('/'.$fbID.'/feed?limit=10&fields=name,id,type,message,created_time,likes.summary(true),comments.summary(true),shares');
+$fbPosts = $fb->get('/'.$fbID.'/posts?limit=10&fields=name,id,type,message,created_time,likes.summary(true),comments.summary(true),shares');
 $fbPosts = $fbPosts->getDecodedBody();
 
 $postsDates = array();
@@ -35,8 +35,11 @@ $totalLikes = 0;
 $totalComments = 0;
 $totalShares = 0;
 
+/*echo "<pre>";
+print_r($fbPosts['data']);
+exit;*/
+
 foreach($fbPosts['data'] as $key => $post){
-	
 	$formatedDate = substr($post['created_time'], 0, 10);
 	array_push($postsDates, $formatedDate);
 	$totalLikes += $post['likes']['summary']['total_count'];
@@ -54,11 +57,17 @@ $postFrequency = round($numberOfPosts/$dateRange, 2);
 //Engajamento médio por post (likes + comentários)
 $postEngagement = round(($totalLikes + $totalComments*2 + $totalShares*3) / $numberOfPosts);
 
+//Score
+$pageScore = ($totalLikes + $totalComments + $totalShares) / $numberOfPosts;
+$pageScore = round($pageScore*100/$fbPage['fan_count'], 2);
+    
+
 $returnData['pageAvatar'] = $fbPage['picture']['data']['url'];
 $returnData['pageName'] = $fbPage['name'];
 $returnData['pageFans'] = $fbPage['fan_count'];
 $returnData['pagePostFrequency'] = $postFrequency;
 $returnData['pagePostEngagement'] = $postEngagement;
+$returnData['pageScore'] = $pageScore;
 
 print_r(json_encode($returnData)); 
 exit;

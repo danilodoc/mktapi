@@ -48,6 +48,18 @@
     color: #000;
 }
 
+
+.api-card-event > .mdl-card__actions > .mdl-layout-spacer > .material-icons{
+    display: block;
+    float: right;
+}
+.mdl-layout-spacer .score{
+    font-size: 15px;
+    margin-top: 5px;
+    display: block;
+    float: right;
+}
+
 #seoContainer {
     float:left;
     width: 100%;
