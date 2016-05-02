@@ -55,16 +55,20 @@ $today = new DateTime();
 $firstPostDate = new DateTime($postsDates[$numberOfPosts-1]);
 $dateRange = date_diff($today, $firstPostDate);
 $dateRange = $dateRange->days;
-$postFrequency = round($numberOfPosts/$dateRange, 2);
+$postFrequency = $dateRange > 0 ? round($numberOfPosts/$dateRange, 2) : "10+";
 
 //Engajamento médio por post (likes + comentários)
 $postEngagement = round(($totalLikes + $totalComments*2) / $numberOfPosts, 2);
+
+$pageScore = ($totalLikes + $totalComments) / $numberOfPosts;
+$pageScore = round($pageScore*100/$userData['data']['counts']['followed_by'], 2);
 
 $returnData['profilePicture'] = $userData['data']['profile_picture'];
 $returnData['fullName'] = $userData['data']['full_name'];
 $returnData['followedBy'] = $userData['data']['counts']['followed_by'];
 $returnData['postFrequency'] = $postFrequency;
 $returnData['postEngagement'] = $postEngagement;
+$returnData['pageScore'] = $pageScore;
 
 print_r(json_encode($returnData)); 
 exit;

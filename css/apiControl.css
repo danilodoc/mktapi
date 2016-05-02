@@ -74,6 +74,10 @@
     padding-bottom: 20px;
 }
 
+#facebookContainer #facebookChart{
+    /*display: none;*/
+}
+
 #instagramContainer {
     float:left;
     width: 100%;

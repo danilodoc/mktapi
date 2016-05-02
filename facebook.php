@@ -52,7 +52,7 @@ $today = new DateTime();
 $firstPostDate = new DateTime($postsDates[$numberOfPosts-1]);
 $dateRange = date_diff($today, $firstPostDate);
 $dateRange = $dateRange->days;
-$postFrequency = round($numberOfPosts/$dateRange, 2);
+$postFrequency = $dateRange > 0 ? round($numberOfPosts/$dateRange, 2) : "10+";
 
 //Engajamento médio por post (likes + comentários)
 $postEngagement = round(($totalLikes + $totalComments*2 + $totalShares*3) / $numberOfPosts);

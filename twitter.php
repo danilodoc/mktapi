@@ -42,10 +42,14 @@ $firstPostDate = new DateTime($postsDates[$numberOfPosts-1]);
 $dateRange = date_diff($today, $firstPostDate);
 $dateRange = $dateRange->days;
 
-$postFrequency = round($numberOfPosts/$dateRange, 2);
+$postFrequency = $dateRange > 0 ? round($numberOfPosts/$dateRange, 2) : "100+";
 
 //Engajamento médio por tweet (retweets + favoritos)
-$postEngagement = round(($totalRetweets + $totalFavorites) / $numberOfPosts, 2);
+$postEngagement = round(($totalRetweets*2 + $totalFavorites) / $numberOfPosts, 2);
+
+//Score
+$pageScore = ($totalRetweets + $totalFavorites) / $numberOfPosts;
+$pageScore = round($pageScore*100/$user['followers_count'], 2);
 
 
 $returnData['pageAvatar'] = $user['profile_image_url'];
@@ -53,6 +57,7 @@ $returnData['pageName'] = $user['name'];
 $returnData['followers'] = $user['followers_count'];
 $returnData['pagePostFrequency'] = $postFrequency;
 $returnData['pagePostEngagement'] = $postEngagement;
+$returnData['pageScore'] = $pageScore;
 
 print_r(json_encode($returnData)); 
 exit;

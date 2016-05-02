@@ -56,6 +56,9 @@ $returnData['keyWords'] = $keyWords;
 $objPage = SEOstats\Google::getPagespeedAnalysis();
 $returnData['pageTitle'] = $objPage->title;
 
+//Score
+$returnData['pageScore'] = $returnData['backLinks'];
+
 print_r(json_encode($returnData));
 exit;
 ?>

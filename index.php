@@ -86,6 +86,10 @@ require_once('vendor/autoload.php');
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="facebookButton">
                         <i class="material-icons">add</i>
                     </button>
+                    <!-- Accent-colored raised button with ripple -->
+                    <!--<button id="facebookChartButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                      Gerar gráfico
+                    </button>-->
                 </form>
                 
                 <!-- INSTAGRAM -->
@@ -148,7 +152,7 @@ require_once('vendor/autoload.php');
 
             <main id="masterContainer" class="mdl-layout__content">
                 <div class="page-content">
-                    <h1>MKT API V0.2</h1>
+                    <h1>MKT API V0.3</h1>
                     <div id="seoContainer">
                         <p>
                             <div class="seo-list-action mdl-list">
@@ -159,6 +163,9 @@ require_once('vendor/autoload.php');
                                     </span>
                                 </div>
                             </div>
+                        </p>
+                        <p id="seoChartParent">
+                            <canvas id="seoChart" width="400" height="100"></canvas>
                         </p>
                     </div>
                     <div id="facebookContainer">
@@ -171,7 +178,10 @@ require_once('vendor/autoload.php');
                                     </span>
                                 </div>
                             </div>
-                        </p>                        
+                        </p>
+                        <p id="facebookChartParent">
+                            <canvas id="facebookChart" width="400" height="100"></canvas>
+                        </p>
                     </div>
                     <div id="instagramContainer">
                         <p>
@@ -183,7 +193,10 @@ require_once('vendor/autoload.php');
                                     </span>
                                 </div>
                             </div>
-                        </p>                        
+                        </p>  
+                        <p id="instagramChartParent">
+                            <canvas id="instagramChart" width="400" height="100"></canvas>
+                        </p>                      
                     </div>
                     <div id="twitterContainer">
                         <p>
@@ -195,7 +208,10 @@ require_once('vendor/autoload.php');
                                     </span>
                                 </div>
                             </div>
-                        </p>                        
+                        </p>  
+                        <p id="twitterChartParent">
+                            <canvas id="twitterChart" width="400" height="100"></canvas>
+                        </p>                      
                     </div>
                     <div id="youtubeContainer">
                         <p>
@@ -207,7 +223,10 @@ require_once('vendor/autoload.php');
                                     </span>
                                 </div>
                             </div>
-                        </p>                        
+                        </p>
+                        <p id="youtubeChartParent">
+                            <canvas id="youtubeChart" width="400" height="100"></canvas>
+                        </p>                         
                     </div>
                 </div>
             </main>
@@ -220,5 +239,7 @@ require_once('vendor/autoload.php');
         <script src="js/bootstrap.min.js"></script>
         <!-- Elements Control) -->
         <script src="js/apiControl.js"></script>
+        <!-- Chart JS -->
+        <script src="js/Chart.js/dist/Chart.bundle.js"></script>
     </body>
 </html>
