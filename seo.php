@@ -28,7 +28,7 @@ if(!$seostats->setUrl($url)) {
 $returnData['backLinks'] = SEOstats\WebMeUp::getWebMeUpBacklinksCount($url);
 
 //Google Page Rank
-$returnData['pageRnak'] = SEOstats\Google::getPageRank();
+//$returnData['pageRnak'] = SEOstats\Google::getPageRank();
     
 //Mozscape Domain Authority
 $returnData['domainAuthority'] = round(SEOstats\Mozscape::getDomainAuthority());

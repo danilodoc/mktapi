@@ -164,8 +164,17 @@ require_once('vendor/autoload.php');
                                 </div>
                             </div>
                         </p>
+                        <p id="chartBtns">
+                           <button id="btnScore" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Score</button>
+                           
+                            <button id="btnBackLinks" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back Links</button>
+                            
+                            <button id="btnDomainAuthority" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Domain Authority</button>
+                            
+                            <button id="btnAuthority" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Page Authority</button>
+                        </p>
                         <p id="seoChartParent">
-                            <canvas id="seoChart" width="400" height="100"></canvas>
+                            <canvas id="seoChart"></canvas>
                         </p>
                     </div>
                     <div id="facebookContainer">
@@ -179,8 +188,17 @@ require_once('vendor/autoload.php');
                                 </div>
                             </div>
                         </p>
+                        <p id="chartBtns">
+                           <button id="btnScore" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Score</button>
+                           
+                           <button id="btnFans" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Page Fans</button>
+                           
+                           <button id="btnPostFrequency" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Post Frequency</button>
+                           
+                           <button id="btnPostEngagement" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Post Engagement</button>
+                        </p>
                         <p id="facebookChartParent">
-                            <canvas id="facebookChart" width="400" height="100"></canvas>
+                            <canvas id="facebookChart" width="400" height="200"></canvas>
                         </p>
                     </div>
                     <div id="instagramContainer">
@@ -193,9 +211,18 @@ require_once('vendor/autoload.php');
                                     </span>
                                 </div>
                             </div>
-                        </p>  
+                        </p>
+                        <p id="chartBtns">
+                           <button id="btnScore" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Score</button>
+                           
+                           <button id="btnFollowers" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Followers</button>
+                           
+                           <button id="btnPostFrequency" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Post Frequency</button>
+                           
+                           <button id="btnPostEngagement" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Post Engagement</button>
+                        </p>
                         <p id="instagramChartParent">
-                            <canvas id="instagramChart" width="400" height="100"></canvas>
+                            <canvas id="instagramChart"></canvas>
                         </p>                      
                     </div>
                     <div id="twitterContainer">
@@ -208,9 +235,18 @@ require_once('vendor/autoload.php');
                                     </span>
                                 </div>
                             </div>
-                        </p>  
+                        </p>
+                        <p id="chartBtns">
+                           <button id="btnScore" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Score</button>
+                           
+                           <button id="btnFollowers" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Followers</button>
+                           
+                           <button id="btnPostFrequency" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Post Frequency</button>
+                           
+                           <button id="btnPostEngagement" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Post Engagement</button>
+                        </p>
                         <p id="twitterChartParent">
-                            <canvas id="twitterChart" width="400" height="100"></canvas>
+                            <canvas id="twitterChart"></canvas>
                         </p>                      
                     </div>
                     <div id="youtubeContainer">
@@ -224,8 +260,19 @@ require_once('vendor/autoload.php');
                                 </div>
                             </div>
                         </p>
+                        <p id="chartBtns">
+                           <button id="btnScore" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Score</button>
+                           
+                           <button id="btnSubscribers" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Subscribers</button>
+                           
+                           <button id="btnTotalVideos" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Total Videos</button>
+                           
+                           <button id="btnTotalViews" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Total Views</button>
+                           
+                           <button id="btnTotalComments" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Total Comments</button>
+                        </p>
                         <p id="youtubeChartParent">
-                            <canvas id="youtubeChart" width="400" height="100"></canvas>
+                            <canvas id="youtubeChart"></canvas>
                         </p>                         
                     </div>
                 </div>

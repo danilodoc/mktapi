@@ -1,5 +1,11 @@
 $(document).ready(function(){ 
-        
+    
+    initChart('#seoChart', '#seoContainer', '#pageScore');
+    initChart('#facebookChart', '#facebookContainer', '#pageScore');
+    initChart('#instagramChart', '#instagramContainer', '#pageScore');
+    initChart('#twitterChart', '#twitterContainer', '#pageScore');
+    initChart('#youtubeChart', '#youtubeContainer', '#pageScore');
+    
 });
 
 $(document).on('click', '#seoButton', function() {
@@ -13,9 +19,9 @@ $(document).on('click', '#seoButton', function() {
 
             $('#seoButton').attr("disabled", false);
 
-            $("#seoContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><span id='pageName'>"+urlField+"</span><br><b>Back Links:</b> "+data.backLinks+"<br><b>Page Rank:</b> "+data.pageRnak+"<br><b>Domain Authority:</b> "+data.domainAuthority+"<br><b>Page Authority:</b> "+data.pageAuthority+"<br><b>Key Words:</b> "+data.keyWords+"<br><b>Page Title:</b> "+data.pageTitle+"</p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            $("#seoContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><span id='pageName'>"+urlField+"</span><br><b>Back Links:</b><span id='pageBackLinks'>"+data.backLinks+"</span><br><b>Domain Authority:</b> <span id='pageDomainAuthority'>"+data.domainAuthority+"</span><br><b>Page Authority:</b> <span id='pageAuthority'>"+data.pageAuthority+"</span><br><b>Key Words:</b> "+data.keyWords+"<br><b>Page Title:</b> "+data.pageTitle+"</p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
             
-            initChart('#seoChart', '#seoContainer');
+            initChart('#seoChart', '#seoContainer', '#pageScore');
 
         }).fail(function() {
             alert("Ocorreu um erro na api, verifique os dados e tente novamente.");
@@ -35,9 +41,9 @@ $(document).on('click', '#facebookButton', function() {
 
             $('#facebookButton').attr("disabled", false);
 
-            $("#facebookContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Page Fans:</b> "+data.pageFans+"<br><b>Post Frequency:</b> "+data.pagePostFrequency+"<br><b>Post Engagement:</b> "+data.pagePostEngagement+"<br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            $("#facebookContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Page Fans:</b> <span id='pageFans'>"+data.pageFans+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.pagePostFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+data.pagePostEngagement+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
             
-            initChart('#facebookChart', '#facebookContainer');
+            initChart('#facebookChart', '#facebookContainer', '#pageScore');
             
         }).fail(function() {
             alert("Ocorreu um erro na api, verifique os dados e tente novamente.");
@@ -57,9 +63,9 @@ $(document).on('click', '#instagramButton', function() {
 
             $('#instagramButton').attr("disabled", false);
 
-            $("#instagramContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Followers:</b> "+data.followedBy+"<br><b>Post Frequency:</b> "+data.postFrequency+"<br><b>Post Engagement:</b> "+data.postEngagement+"<br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            $("#instagramContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Followers:</b> <span id='pageFollowers'>"+data.followedBy+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.postFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+data.postEngagement+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
             
-            initChart('#instagramChart', '#instagramContainer');
+            initChart('#instagramChart', '#instagramContainer', '#pageScore');
             
         }).fail(function() {
             alert("Ocorreu um erro na api, verifique os dados e tente novamente.");
@@ -79,9 +85,9 @@ $(document).on('click', '#twitterButton', function() {
 
             $('#twitterButton').attr("disabled", false);
 
-            $("#twitterContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Followers:</b> "+data.followers+"<br><b>Post Frequency:</b> "+data.pagePostFrequency+"<br><b>Post Engagement:</b> "+data.pagePostEngagement+"<br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            $("#twitterContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Followers:</b> <span id='pageFollowers'>"+data.followers+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.pagePostFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+data.pagePostEngagement+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
             
-            initChart('#twitterChart', '#twitterContainer');
+            initChart('#twitterChart', '#twitterContainer', '#pageScore');
             
         }).fail(function() {
             alert("Ocorreu um erro na api, verifique os dados e tente novamente.");
@@ -101,9 +107,9 @@ $(document).on('click', '#youtubeButton', function() {
 
             $('#youtubeButton').attr("disabled", false);
 
-            $("#youtubeContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Channel:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Subscribers:</b> "+data.subscribers+"<br><b>Videos:</b> "+data.videos+"<br><b>Views:</b> "+data.views+"<br><b>Comments:</b> "+data.comments+"<br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            $("#youtubeContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Channel:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Subscribers:</b> <span id='pageSubscribers'>"+data.subscribers+"</span><br><b>Videos:</b> <span id='pageTotalVideos'>"+data.videos+"</span><br><b>Total Views:</b> <span id='pageTotalViews'>"+data.views+"</span><br><b>Total Comments:</b> <span id='pageTotalComments'>"+data.comments+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
 
-            initChart('#youtubeChart', '#youtubeContainer');
+            initChart('#youtubeChart', '#youtubeContainer', '#pageScore');
             
         }).fail(function() {
             alert("Ocorreu um erro na api, verifique os dados e tente novamente.");
@@ -114,56 +120,51 @@ $(document).on('click', '#youtubeButton', function() {
 
 $(document).on('click', '#remove_btn', function() {
     
-    var type = $(this).parent().parent().parent().attr('id');
-    type = '#'+type.slice(0,-9);
+    var cardType = $(this).parent().parent().parent().attr('id');
+    cardType = '#'+type.slice(0,-9);
     
     $(this).parent().parent().remove();
     
-    initChart(type+'Chart', type+'Container');
+    initChart(cardType+'Chart', cardType+'Container', '#pageScore');
 });
 
-function initChart(chartId, cardId){
+$(document).on('click', '#chartBtns button', function(){
+    
+    var cardType = $(this).parent().parent().attr('id').slice(0, -9);
+    var valueId = $(this).attr('id').slice(3);
+    
+    initChart('#'+cardType+'Chart', '#'+cardType+'Container', '#page'+valueId);
+});
+
+function initChart(chartId, cardId, valuesId){
+    
+    var names = getCardsValue(cardId, '#pageName');
+    var values = getCardsValue(cardId, valuesId);
     
     $(chartId+"Parent").empty();
     $(chartId+"Parent").append('<canvas id="'+chartId.slice(1)+'" width="400" height="100"><canvas>');
     
-    var names = getCardsName(cardId);
-    
-    var scores = getCardsScore(cardId);
-    
     var barChartData = {
         labels: names,
         datasets: [{
-            label: 'Score',
+            label: valuesId,
             backgroundColor: "rgba(220,220,220,0.5)",
-            data: scores
+            data: values
         }]
     };
     
     showChart(chartId, barChartData);
 }
 
-function getCardsName(id){
+function getCardsValue(id, field){
     
-    var names = new Array();
+    var values = new Array();
     
     $(id+" .api-card-event").each(function( index ) {
-        names.push($(this).find('#pageName').text());
+        values.push($(this).find(field).text());
     });
-    
-    return names;
-    
-}
 
-function getCardsScore(id){
-    
-    var scores = new Array();
-    
-    $(id+" .api-card-event").each(function( index ) {
-        scores.push($(this).find('#pageScore').text());
-    });
-    
-    return scores;
+    return values;
     
 }
 
@@ -175,8 +176,6 @@ function showChart(id, barChartData){
         type: 'bar',
         data: barChartData,
         options: {
-            // Elements options apply to all of the options unless overridden in a dataset
-            // In this case, we are setting the border of each bar to be 2px wide and green
             elements: {
                 rectangle: {
                     borderWidth: 2,
