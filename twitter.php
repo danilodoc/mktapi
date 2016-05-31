@@ -4,8 +4,8 @@ require_once('vendor/autoload.php');
 
 if(empty($_GET['id'])){
 	$returnData = array("error" => "Missing ID");
-    print_r(json_encode($returnData));
-    exit;
+  print_r(json_encode($returnData));
+  exit;
 }
 
 $twitterID = $_GET['id'];
@@ -25,14 +25,14 @@ $totalFavorites = 0;
 $totalRetweets = 0;
 
 foreach($tweets as $key => $post){
-	
+
 	$post = get_object_vars($post);
-	
+
 	$formatedDate = new DateTime($post['created_at']);
 	$formatedDate = date_format($formatedDate, 'Y-m-d');
-	
+
 	array_push($postsDates, $formatedDate);
-	
+
 	$totalFavorites += $post['favorite_count'];
 	$totalRetweets += $post['retweet_count'];
 }
@@ -59,6 +59,6 @@ $returnData['pagePostFrequency'] = $postFrequency;
 $returnData['pagePostEngagement'] = $postEngagement;
 $returnData['pageScore'] = $pageScore;
 
-print_r(json_encode($returnData)); 
+print_r(json_encode($returnData));
 exit;
 ?>
