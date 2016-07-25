@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "abraham/twitteroauth",
-            "version": "0.6.3",
+            "version": "0.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/abraham/twitteroauth.git",
-                "reference": "6bcc5e866423e499a962a00a06df07da880c0c1c"
+                "reference": "f7dec715c6e79e6085470b8b5d4dc2727afc5186"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/abraham/twitteroauth/zipball/6bcc5e866423e499a962a00a06df07da880c0c1c",
-                "reference": "6bcc5e866423e499a962a00a06df07da880c0c1c",
+                "url": "https://api.github.com/repos/abraham/twitteroauth/zipball/f7dec715c6e79e6085470b8b5d4dc2727afc5186",
+                "reference": "f7dec715c6e79e6085470b8b5d4dc2727afc5186",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "social",
                 "twitter"
             ],
-            "time": "2016-03-30 11:14:45"
+            "time": "2016-04-20 23:23:26"
         },
         {
             "name": "catfan/medoo",
@@ -161,21 +161,20 @@
         },
         {
             "name": "facebook/php-sdk-v4",
-            "version": "5.1.2",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/facebook-php-sdk-v4.git",
-                "reference": "2c42fb3002953355f12d3c6e8003a9fd5af563d9"
+                "reference": "c60fba1fe1de62db1e0776d32fc2fb778189459c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/2c42fb3002953355f12d3c6e8003a9fd5af563d9",
-                "reference": "2c42fb3002953355f12d3c6e8003a9fd5af563d9",
+                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/c60fba1fe1de62db1e0776d32fc2fb778189459c",
+                "reference": "c60fba1fe1de62db1e0776d32fc2fb778189459c",
                 "shasum": ""
             },
             "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.4.0"
+                "php": "^5.4|^7.0"
             },
             "require-dev": {
                 "guzzlehttp/guzzle": "~5.0",
@@ -194,7 +193,10 @@
             "autoload": {
                 "psr-4": {
                     "Facebook\\": "src/Facebook/"
-                }
+                },
+                "files": [
+                    "src/Facebook/polyfills.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -212,7 +214,7 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2015-11-19 21:07:36"
+            "time": "2016-05-18 22:04:36"
         },
         {
             "name": "madcoda/php-youtube-api",

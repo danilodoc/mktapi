@@ -9,14 +9,14 @@ if(empty($_GET['id'])){
 }
 
 $username = $_GET['id'];
-$access_token = '822011.5b9e1e6.1172c49ca13c432c87a069bcf68b8b49';
+$access_token = '822011.6cf8104.ef00f1c18fbb458cb07b81168655899e';
 
 function Request($url) {
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);  
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
-    curl_setopt($ch, CURLOPT_HEADER, 0);  
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
 
     $result = curl_exec($ch);
 
@@ -29,6 +29,7 @@ function Request($url) {
 $url = "https://api.instagram.com/v1/users/search?q=" . $username . "&access_token=" . $access_token;
 
 $userID = json_decode(Request($url), true);
+print_r($userID); exit;
 $userID = $userID['data'][0]['id'];
 
 $url = "https://api.instagram.com/v1/users/" . $userID . "/?access_token=" . $access_token;
@@ -45,7 +46,7 @@ $totalComments = 0;
 foreach($userRecentFeed['data'] as $key => $post){
 	$formatedDate = date('Y-m-d', $post['created_time']);
 	array_push($postsDates, $formatedDate);
-	
+
 	$totalLikes += $post['likes']['count'];
 	$totalComments += $post['comments']['count'];
 }
@@ -70,6 +71,6 @@ $returnData['postFrequency'] = $postFrequency;
 $returnData['postEngagement'] = $postEngagement;
 $returnData['pageScore'] = $pageScore;
 
-print_r(json_encode($returnData)); 
+print_r(json_encode($returnData));
 exit;
 ?>

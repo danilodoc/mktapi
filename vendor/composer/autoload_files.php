@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'c7359326b6707d98bdc176bf9ddeaebf' => $vendorDir . '/catfan/medoo/medoo.php',
+    '7e702cccdb9dd904f2ccf22e5f37abae' => $vendorDir . '/facebook/php-sdk-v4/src/Facebook/polyfills.php',
 );

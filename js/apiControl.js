@@ -18,6 +18,11 @@ $(document).on('click', '#seoButton', function() {
         $.getJSON( "seo.php", { url: urlField }, function( data ) {
             $('#seoButton').attr("disabled", false);
 
+            if(data.error){
+              alert(data.error);
+              return;
+            }
+
             $("#seoContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><span id='pageName'>"+urlField+"</span><br><b>Back Links:</b><span id='pageBackLinks'>"+data.backLinks+"</span><br><b>Domain Authority:</b> <span id='pageDomainAuthority'>"+data.domainAuthority+"</span><br><b>Page Authority:</b> <span id='pageAuthority'>"+data.pageAuthority+"</span><br><b>Key Words:</b> "+data.keyWords+"<br><b>Page Title:</b> "+data.pageTitle+"</p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
 
             initChart('#seoChart', '#seoContainer', '#pageScore');
@@ -39,6 +44,11 @@ $(document).on('click', '#facebookButton', function() {
         $.getJSON( "facebook.php", { id: facebookField }, function( data ) {
 
             $('#facebookButton').attr("disabled", false);
+
+            if(data.error){
+              alert(data.error);
+              return;
+            }
 
             $("#facebookContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Page Fans:</b> <span id='pageFans'>"+data.pageFans+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.pagePostFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+data.pagePostEngagement+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
 
@@ -62,6 +72,11 @@ $(document).on('click', '#instagramButton', function() {
 
             $('#instagramButton').attr("disabled", false);
 
+            if(data.error){
+              alert(data.error);
+              return;
+            }
+
             $("#instagramContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Followers:</b> <span id='pageFollowers'>"+data.followedBy+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.postFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+data.postEngagement+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
 
             initChart('#instagramChart', '#instagramContainer', '#pageScore');
@@ -83,6 +98,11 @@ $(document).on('click', '#twitterButton', function() {
         $.getJSON( "twitter.php", { id: twitterField }, function( data ) {
 
             $('#twitterButton').attr("disabled", false);
+
+            if(data.error){
+              alert(data.error);
+              return;
+            }
 
             $("#twitterContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Followers:</b> <span id='pageFollowers'>"+data.followers+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.pagePostFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+data.pagePostEngagement+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
 
@@ -106,6 +126,11 @@ $(document).on('click', '#youtubeButton', function() {
 
             $('#youtubeButton').attr("disabled", false);
 
+            if(data.error){
+              alert(data.error);
+              return;
+            }
+
             $("#youtubeContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Channel:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Subscribers:</b> <span id='pageSubscribers'>"+data.subscribers+"</span><br><b>Videos:</b> <span id='pageTotalVideos'>"+data.videos+"</span><br><b>Total Views:</b> <span id='pageTotalViews'>"+data.views+"</span><br><b>Total Comments:</b> <span id='pageTotalComments'>"+data.comments+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
 
             initChart('#youtubeChart', '#youtubeContainer', '#pageScore');
@@ -121,7 +146,7 @@ $(document).on('click', '#remove_btn', function() {
 
     var cardType = $(this).parent().parent().parent().attr('id');
     cardType = '#'+cardType.slice(0,-9);
-    
+
     $(this).parent().parent().remove();
 
     initChart(cardType+'Chart', cardType+'Container', '#pageScore');
