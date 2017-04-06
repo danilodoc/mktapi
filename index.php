@@ -39,7 +39,7 @@ require_once('vendor/autoload.php');
                     <div class="mdl-layout-spacer"></div>
                     <!-- Navigation -->
                     <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link" href="">Documentação</a>
+                        <a class="mdl-navigation__link" href="https://docs.google.com/document/d/1vyNkVNl8KjH8xN1vjC7XBuvUZ43gGnRlpTvDDbh7iF0" target="_blank">Documentação</a>
                     </nav>
                 </div>
             </header>
