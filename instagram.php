@@ -9,7 +9,6 @@ if(empty($_GET['id'])){
 }
 
 $username = $_GET['id'];
-$access_token = '822011.6cf8104.ef00f1c18fbb458cb07b81168655899e';
 
 function Request($url) {
 
@@ -26,25 +25,29 @@ function Request($url) {
 
 }
 
-$url = "https://api.instagram.com/v1/users/search?q=" . $username . "&access_token=" . $access_token;
+$url = "https://www.instagram.com/" . $username . "/";
 
-$userID = json_decode(Request($url), true);
-print_r($userID); exit;
-$userID = $userID['data'][0]['id'];
+$userData = Request($url);
 
-$url = "https://api.instagram.com/v1/users/" . $userID . "/?access_token=" . $access_token;
-$userData = json_decode(Request($url), true);
+preg_match('/<script type=\"text\/javascript\">window._sharedData =(.*?);<\/script>/', $userData, $match);
 
-$url = "https://api.instagram.com/v1/users/" . $userID . "/media/recent/?access_token=" . $access_token;
-$userRecentFeed = json_decode(Request($url), true);
+$userData = json_decode($match[1], true);
+
+if(empty($userData['entry_data'])){
+	$returnData = array("error" => "User not found");
+    print_r(json_encode($returnData));
+    exit;
+}
+
+$userData = $userData['entry_data']['ProfilePage'][0]['user'];
 
 $postsDates = array();
-$numberOfPosts = count($userRecentFeed['data']);
+$numberOfPosts = count($userData['media']['nodes']);
 $totalLikes = 0;
 $totalComments = 0;
 
-foreach($userRecentFeed['data'] as $key => $post){
-	$formatedDate = date('Y-m-d', $post['created_time']);
+foreach($userData['media']['nodes'] as $key => $post){
+	$formatedDate = date('Y-m-d', $post['date']);
 	array_push($postsDates, $formatedDate);
 
 	$totalLikes += $post['likes']['count'];
@@ -62,11 +65,11 @@ $postFrequency = $dateRange > 0 ? round($numberOfPosts/$dateRange, 2) : "10+";
 $postEngagement = round(($totalLikes + $totalComments*2) / $numberOfPosts, 2);
 
 $pageScore = ($totalLikes + $totalComments) / $numberOfPosts;
-$pageScore = round($pageScore*100/$userData['data']['counts']['followed_by'], 2);
+$pageScore = round($pageScore*100/$userData['followed_by']['count'], 2);
 
-$returnData['profilePicture'] = $userData['data']['profile_picture'];
-$returnData['fullName'] = $userData['data']['full_name'];
-$returnData['followedBy'] = $userData['data']['counts']['followed_by'];
+$returnData['profilePicture'] = $userData['profile_pic_url'];
+$returnData['fullName'] = $userData['full_name'];
+$returnData['followedBy'] = $userData['followed_by']['count'];
 $returnData['postFrequency'] = $postFrequency;
 $returnData['postEngagement'] = $postEngagement;
 $returnData['pageScore'] = $pageScore;

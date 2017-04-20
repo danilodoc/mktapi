@@ -1,11 +1,11 @@
-$(document).ready(function(){
-
+$(document).ready(function(){ 
+    
     initChart('#seoChart', '#seoContainer', '#pageScore');
     initChart('#facebookChart', '#facebookContainer', '#pageScore');
     initChart('#instagramChart', '#instagramContainer', '#pageScore');
     initChart('#twitterChart', '#twitterContainer', '#pageScore');
     initChart('#youtubeChart', '#youtubeContainer', '#pageScore');
-
+    
 });
 
 $(document).on('click', '#seoButton', function() {
@@ -16,15 +16,11 @@ $(document).on('click', '#seoButton', function() {
     }else{
         $('#seoButton').attr("disabled", true);
         $.getJSON( "seo.php", { url: urlField }, function( data ) {
+
             $('#seoButton').attr("disabled", false);
 
-            if(data.error){
-              alert(data.error);
-              return;
-            }
-
-            $("#seoContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><span id='pageName'>"+urlField+"</span><br><b>Back Links:</b><span id='pageBackLinks'>"+data.backLinks+"</span><br><b>Domain Authority:</b> <span id='pageDomainAuthority'>"+data.domainAuthority+"</span><br><b>Page Authority:</b> <span id='pageAuthority'>"+data.pageAuthority+"</span><br><b>Key Words:</b> "+data.keyWords+"<br><b>Page Title:</b> "+data.pageTitle+"</p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
-
+            $("#seoContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><span id='pageName'>"+urlField+"</span><br><b>Back Links:</b><span id='pageBackLinks'>"+accounting.formatNumber(data.backLinks,0,'.')+"</span><br><b>Domain Authority:</b> <span id='pageDomainAuthority'>"+accounting.formatNumber(data.domainAuthority,0,'.')+"</span><br><b>Page Authority:</b> <span id='pageAuthority'>"+accounting.formatNumber(data.pageAuthority,0,'.')+"</span><br><b>Key Words:</b> "+data.keyWords+"<br><b>Page Title:</b> "+data.pageTitle+"</p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            
             initChart('#seoChart', '#seoContainer', '#pageScore');
 
         }).fail(function() {
@@ -45,15 +41,10 @@ $(document).on('click', '#facebookButton', function() {
 
             $('#facebookButton').attr("disabled", false);
 
-            if(data.error){
-              alert(data.error);
-              return;
-            }
-
-            $("#facebookContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Page Fans:</b> <span id='pageFans'>"+data.pageFans+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.pagePostFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+data.pagePostEngagement+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
-
+            $("#facebookContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Page Fans:</b> <span id='pageFans'>"+accounting.formatNumber(data.pageFans,0,'.')+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.pagePostFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+accounting.formatNumber(data.pagePostEngagement,0,'.')+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            
             initChart('#facebookChart', '#facebookContainer', '#pageScore');
-
+            
         }).fail(function() {
             alert("Ocorreu um erro na api, verifique os dados e tente novamente.");
             $('#facebookButton').attr("disabled", false);
@@ -72,15 +63,10 @@ $(document).on('click', '#instagramButton', function() {
 
             $('#instagramButton').attr("disabled", false);
 
-            if(data.error){
-              alert(data.error);
-              return;
-            }
-
-            $("#instagramContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Followers:</b> <span id='pageFollowers'>"+data.followedBy+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.postFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+data.postEngagement+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
-
+            $("#instagramContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Followers:</b> <span id='pageFollowers'>"+accounting.formatNumber(data.followedBy,0,'.')+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.postFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+accounting.formatNumber(data.postEngagement,0,'.')+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            
             initChart('#instagramChart', '#instagramContainer', '#pageScore');
-
+            
         }).fail(function() {
             alert("Ocorreu um erro na api, verifique os dados e tente novamente.");
             $('#instagramButton').attr("disabled", false);
@@ -99,15 +85,10 @@ $(document).on('click', '#twitterButton', function() {
 
             $('#twitterButton').attr("disabled", false);
 
-            if(data.error){
-              alert(data.error);
-              return;
-            }
-
-            $("#twitterContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Followers:</b> <span id='pageFollowers'>"+data.followers+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.pagePostFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+data.pagePostEngagement+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
-
+            $("#twitterContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.pageAvatar+"\" width=\"50px\" height=\"50px\" /><br><b>Page Name:</b> <span id='pageName'>"+data.pageName+"</span><br><b>Followers:</b> <span id='pageFollowers'>"+accounting.formatNumber(data.followers,0,'.')+"</span><br><b>Post Frequency:</b> <span id='pagePostFrequency'>"+data.pagePostFrequency+"</span><br><b>Post Engagement:</b> <span id='pagePostEngagement'>"+accounting.formatNumber(data.pagePostEngagement,0,'.')+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            
             initChart('#twitterChart', '#twitterContainer', '#pageScore');
-
+            
         }).fail(function() {
             alert("Ocorreu um erro na api, verifique os dados e tente novamente.");
             $('#twitterButton').attr("disabled", false);
@@ -126,15 +107,10 @@ $(document).on('click', '#youtubeButton', function() {
 
             $('#youtubeButton').attr("disabled", false);
 
-            if(data.error){
-              alert(data.error);
-              return;
-            }
-
-            $("#youtubeContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Channel:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Subscribers:</b> <span id='pageSubscribers'>"+data.subscribers+"</span><br><b>Videos:</b> <span id='pageTotalVideos'>"+data.videos+"</span><br><b>Total Views:</b> <span id='pageTotalViews'>"+data.views+"</span><br><b>Total Comments:</b> <span id='pageTotalComments'>"+data.comments+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
+            $("#youtubeContainer").append("<div class=\"api-card-event mdl-card mdl-shadow--2dp\"><div class=\"mdl-card__title mdl-card--expand\"><p><img src=\""+data.profilePicture+"\" width=\"50px\" height=\"50px\" /><br><b>Channel:</b> <span id='pageName'>"+data.fullName+"</span><br><b>Subscribers:</b> <span id='pageSubscribers'>"+accounting.formatNumber(data.subscribers,0,'.')+"</span><br><b>Videos:</b> <span id='pageTotalVideos'>"+accounting.formatNumber(data.videos,0,'.')+"</span><br><b>Total Views:</b> <span id='pageTotalViews'>"+accounting.formatNumber(data.views,0,'.')+"</span><br><b>Total Comments:</b> <span id='pageTotalComments'>"+accounting.formatNumber(data.comments,0,'.')+"</span><br></p></div><div class=\"mdl-card__actions mdl-card--border\"><a id=\"remove_btn\" class=\"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect\">Delete</a><div class=\"mdl-layout-spacer\"><i class=\"material-icons\">swap_vert</i><i class=\"score\">Score: <span id='pageScore'>"+data.pageScore+"</span></i></div></div></div>");
 
             initChart('#youtubeChart', '#youtubeContainer', '#pageScore');
-
+            
         }).fail(function() {
             alert("Ocorreu um erro na api, verifique os dados e tente novamente.");
             $('#youtubeButton').attr("disabled", false);
@@ -143,31 +119,31 @@ $(document).on('click', '#youtubeButton', function() {
 });
 
 $(document).on('click', '#remove_btn', function() {
-
+    
     var cardType = $(this).parent().parent().parent().attr('id');
     cardType = '#'+cardType.slice(0,-9);
-
+    
     $(this).parent().parent().remove();
-
+    
     initChart(cardType+'Chart', cardType+'Container', '#pageScore');
 });
 
 $(document).on('click', '#chartBtns button', function(){
-
+    
     var cardType = $(this).parent().parent().attr('id').slice(0, -9);
     var valueId = $(this).attr('id').slice(3);
-
+    
     initChart('#'+cardType+'Chart', '#'+cardType+'Container', '#page'+valueId);
 });
 
 function initChart(chartId, cardId, valuesId){
-
+    
     var names = getCardsValue(cardId, '#pageName');
     var values = getCardsValue(cardId, valuesId);
-
+    
     $(chartId+"Parent").empty();
     $(chartId+"Parent").append('<canvas id="'+chartId.slice(1)+'" width="400" height="100"><canvas>');
-
+    
     var barChartData = {
         labels: names,
         datasets: [{
@@ -176,26 +152,26 @@ function initChart(chartId, cardId, valuesId){
             data: values
         }]
     };
-
+    
     showChart(chartId, barChartData);
 }
 
 function getCardsValue(id, field){
-
+    
     var values = new Array();
-
+    
     $(id+" .api-card-event").each(function( index ) {
         values.push($(this).find(field).text());
     });
 
     return values;
-
+    
 }
 
 function showChart(id, barChartData){
 
     var ctx = $(id).get(0).getContext("2d");
-
+    
     window.myBar = new Chart(ctx, {
         type: 'bar',
         data: barChartData,
@@ -224,5 +200,5 @@ function showChart(id, barChartData){
             }
         }
     });
-
+    
 }

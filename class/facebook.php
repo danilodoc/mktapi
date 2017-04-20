@@ -23,7 +23,13 @@ class FacebookController
     if(empty($this->id) || !is_string($this->id)){
       return false;
     }
-
+	
+	$urlId = $this->requestUrl('https://graph.facebook.com/https://www.facebook.com/'.$this->id.'/?access_token='.self::FBCONFIG['default_access_token']);
+	
+	$urlId = json_decode($urlId);
+	
+	$this->id = $urlId->id;
+	
     try{
       $this->page = $this->fbobj->get('/'.$this->id.'/?fields=name,fan_count,picture');
     }catch (\Facebook\Exceptions\FacebookResponseException $e)  {
@@ -108,6 +114,21 @@ class FacebookController
     $pageScore = round($pageScore*100/$fanCount, 2);
 
     return array('pagePostFrequency' => $postFrequency, 'pagePostEngagement' => $postEngagement, 'pageScore' => $pageScore);
+  }
+  
+  private function requestUrl($url) {
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+
+    return $result;
+
   }
 
 }

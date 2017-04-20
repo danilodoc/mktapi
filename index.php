@@ -288,5 +288,7 @@ require_once('vendor/autoload.php');
         <script src="js/apiControl.js"></script>
         <!-- Chart JS -->
         <script src="js/Chart.js/dist/Chart.bundle.js"></script>
+        <!-- Format Numbers -->
+        <script src="js/accounting.js"></script>
     </body>
 </html>
