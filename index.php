@@ -152,7 +152,7 @@ require_once('vendor/autoload.php');
 
             <main id="masterContainer" class="mdl-layout__content">
                 <div class="page-content">
-                    <h1>MKT API V0.3</h1>
+                    <h1>MKT API V0.5</h1>
                     <div id="seoContainer">
                         <p>
                             <div class="seo-list-action mdl-list">
